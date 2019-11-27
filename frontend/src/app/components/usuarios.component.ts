@@ -36,5 +36,9 @@ export class UsuariosComponent implements OnInit {
       nombre: this.nombreInput.value || ""
     };
     console.log("click createUsuario === ", { nuevoUsuario });
+    this.usuariosService.createUsuario(nuevoUsuario).subscribe(data => {
+      console.log({ data });
+      this.getUsuarios();
+    });
   }
 }
