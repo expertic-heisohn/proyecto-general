@@ -7,6 +7,7 @@ import { UsuariosService } from "../services/usuarios.service";
 })
 export class UsuariosComponent implements OnInit {
   public usuarios = [];
+  public headElements = ["id", "nombre", "acciones"];
 
   constructor(private usuariosService: UsuariosService) {}
 
@@ -15,5 +16,8 @@ export class UsuariosComponent implements OnInit {
       console.log({ data });
       this.usuarios = data;
     });
+  }
+  deleteUsuario(indice: number) {
+    console.log("indice", { indice });
   }
 }
