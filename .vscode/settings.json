@@ -1,0 +1,6 @@
+{
+  "typescript.format.insertSpaceAfterSemicolonInForStatements": false,
+  "prettier.semi": false,
+  "javascript.format.insertSpaceAfterSemicolonInForStatements": false,
+  "javascript.implicitProjectConfig.experimentalDecorators": true
+}
