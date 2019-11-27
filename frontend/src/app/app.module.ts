@@ -1,6 +1,11 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { MDBBootstrapModule, NavbarModule } from "angular-bootstrap-md";
+import {
+  MDBBootstrapModule,
+  NavbarModule,
+  IconsModule,
+  TableModule
+} from "angular-bootstrap-md";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
@@ -13,7 +18,9 @@ import { UsuariosService } from "./services/usuarios.service";
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     NavbarModule,
-    HttpClientModule
+    HttpClientModule,
+    IconsModule,
+    TableModule
   ],
   providers: [UsuariosService],
   bootstrap: [AppComponent]
