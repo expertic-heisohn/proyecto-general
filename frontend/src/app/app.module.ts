@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {
   MDBBootstrapModule,
   NavbarModule,
@@ -20,7 +21,9 @@ import { UsuariosService } from "./services/usuarios.service";
     NavbarModule,
     HttpClientModule,
     IconsModule,
-    TableModule
+    TableModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UsuariosService],
   bootstrap: [AppComponent]
