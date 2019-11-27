@@ -4,16 +4,18 @@ import { MDBBootstrapModule, NavbarModule } from "angular-bootstrap-md";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
+import { UsuariosComponent } from "./components/usuarios.component";
+import { UsuariosService } from "./services/usuarios.service";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UsuariosComponent],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     NavbarModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
