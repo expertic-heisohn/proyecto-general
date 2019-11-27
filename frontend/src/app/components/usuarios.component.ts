@@ -12,12 +12,19 @@ export class UsuariosComponent implements OnInit {
   constructor(private usuariosService: UsuariosService) {}
 
   ngOnInit(): void {
+    this.getUsuarios();
+  }
+  getUsuarios(): void {
     this.usuariosService.getUsuarios().subscribe(data => {
       console.log({ data });
       this.usuarios = data;
     });
   }
-  deleteUsuario(indice: number) {
-    console.log("indice", { indice });
+
+  deleteUsuario(indice: number): void {
+    this.usuariosService.deleteUsuario(indice).subscribe(data => {
+      console.log({ data });
+      this.getUsuarios();
+    });
   }
 }
