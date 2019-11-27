@@ -3,7 +3,8 @@ import { NgModule } from "@angular/core";
 import {
   MDBBootstrapModule,
   NavbarModule,
-  IconsModule
+  IconsModule,
+  TableModule
 } from "angular-bootstrap-md";
 import { HttpClientModule } from "@angular/common/http";
 
@@ -18,7 +19,8 @@ import { UsuariosService } from "./services/usuarios.service";
     MDBBootstrapModule.forRoot(),
     NavbarModule,
     HttpClientModule,
-    IconsModule
+    IconsModule,
+    TableModule
   ],
   providers: [UsuariosService],
   bootstrap: [AppComponent]
