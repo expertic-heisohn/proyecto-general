@@ -7,16 +7,15 @@ import { Observable } from "rxjs";
 export class UsuariosService {
   constructor(private http: HttpClient) {}
 
+  /* en _url va la dirección del servicio en java */
+  private _url = "https://bootcamp-dia-3.camilomontoyau.now.sh";
+
   getUsuarios(): Observable<IUsuario[]> {
-    return this.http.get<IUsuario[]>(
-      "https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios"
-    );
+    return this.http.get<IUsuario[]>(`${this._url}/usuarios`);
   }
 
   deleteUsuario(indice: number): Observable<any> {
-    return this.http.delete<any>(
-      `https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios/${indice}`
-    );
+    return this.http.delete<any>(`${this._url}/usuarios/${indice}`);
   }
 
   createUsuario(usuario: IUsuario): Observable<IUsuario> {
@@ -27,7 +26,7 @@ export class UsuariosService {
     };
 
     return this.http.post<IUsuario>(
-      "https://bootcamp-dia-3.camilomontoyau.now.sh/usuarios/",
+      `${this._url}/usuarios/`,
       usuario,
       httpOptions
     );
