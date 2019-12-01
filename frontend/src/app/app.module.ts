@@ -10,7 +10,7 @@ import {
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from "./app.component";
-import { UsuariosComponent } from "./components/usuarios.component";
+import { UsuariosComponent } from "./components/usuarios/usuarios.component";
 import { UsuariosService } from "./services/usuarios.service";
 
 @NgModule({
