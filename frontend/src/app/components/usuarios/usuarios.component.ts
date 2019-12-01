@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { UsuariosService } from "../../services/usuarios.service";
-import { FormControl } from "@angular/forms";
 
 @Component({
   selector: "usuarios",
@@ -11,8 +10,9 @@ export class UsuariosComponent implements OnInit {
 
   public usuarios = [];
   public headElements = ["id", "nombre", "acciones"];
+  public usuarioIndice = null;
 
-  public nombreInput = new FormControl();
+  public nombreInput = "";
 
   ngOnInit(): void {
     this.getUsuarios();
@@ -32,13 +32,31 @@ export class UsuariosComponent implements OnInit {
   }
 
   createUsuario(): void {
+    this.usuarioIndice = null;
     const nuevoUsuario: any = {
-      nombre: this.nombreInput.value || ""
+      nombre: this.nombreInput || ""
     };
     console.log("click createUsuario === ", { nuevoUsuario });
     this.usuariosService.createUsuario(nuevoUsuario).subscribe(data => {
       console.log({ data });
       this.getUsuarios();
     });
+  }
+
+  editUsuarioPopularForm(indice: number): void {
+    this.usuarioIndice = indice;
+    this.nombreInput = this.usuarios[indice].nombre;
+  }
+
+  guardarEdicionUsuario(): void {
+    const usuarioEditado: any = {
+      nombre: this.nombreInput || ""
+    };
+    this.usuariosService
+      .editUsuario(this.usuarioIndice, usuarioEditado)
+      .subscribe(data => {
+        console.log({ data });
+        this.getUsuarios();
+      });
   }
 }

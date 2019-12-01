@@ -5,7 +5,7 @@
     mdbBtn
     color="primary"
     class="relative waves-light"
-    (click)="basicModal.show()"
+    (click)="usuarioIndice = null; nombreInput = ''; basicModal.show()"
     mdbWavesEffect
   >
     Crear Usuario
@@ -22,6 +22,12 @@
         <td>{{ usuario.nombre }}</td>
         <td>
           <mdb-icon fas icon="trash" (click)="deleteUsuario(i)"></mdb-icon>
+          &nbsp;
+          <mdb-icon
+            fas
+            icon="pen"
+            (click)="editUsuarioPopularForm(i); basicModal.show()"
+          ></mdb-icon>
         </td>
       </tr>
     </tbody>
@@ -46,7 +52,20 @@
           >
             <span aria-hidden="true">×</span>
           </button>
-          <h4 class="modal-title w-100" id="myModalLabel">Nuevo Usuario</h4>
+          <h4
+            *ngIf="usuarioIndice != null"
+            class="modal-title w-100"
+            id="myModalLabel"
+          >
+            Editar Usuario
+          </h4>
+          <h4
+            *ngIf="usuarioIndice == null"
+            class="modal-title w-100"
+            id="myModalLabel"
+          >
+            Nuevo Usuario
+          </h4>
         </div>
         <div class="modal-body">
           <div class="md-form">
@@ -57,7 +76,7 @@
               id="nombre"
               class="form-control"
               mdbInput
-              [formControl]="nombreInput"
+              [(ngModel)]="nombreInput"
             />
             <label for="nombre">Nombre de usuario</label>
           </div>
@@ -80,7 +99,9 @@
             color="primary"
             class="relative waves-light"
             mdbWavesEffect
-            (click)="createUsuario()"
+            (click)="
+              usuarioIndice == null ? createUsuario() : guardarEdicionUsuario()
+            "
           >
             Guardar
           </button>
