@@ -8,7 +8,7 @@ export class UsuariosService {
   constructor(private http: HttpClient) {}
 
   /* en _url va la dirección del servicio en java */
-  private _url = "https://bootcamp-dia-3.camilomontoyau.now.sh";
+  private _url = "";
 
   getUsuarios(): Observable<IUsuario[]> {
     return this.http.get<IUsuario[]>(`${this._url}/usuarios`);
