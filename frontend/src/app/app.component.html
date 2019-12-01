@@ -3,21 +3,19 @@
   [containerInside]="false"
 >
   <mdb-navbar-brand>
-    <a class="logo navbar-brand" href="#"><strong>Navbar</strong></a>
+    <a class="logo navbar-brand" (click)="cambiarVista('usuarios')" href="#"
+      ><strong>Heinsohn</strong></a
+    >
   </mdb-navbar-brand>
   <links>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active waves-light" mdbWavesEffect>
-        <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link" (click)="cambiarVista('usuarios')">Usuarios</a>
       </li>
       <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Features</a>
-      </li>
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Pricing</a>
-      </li>
-      <li class="nav-item waves-light" mdbWavesEffect>
-        <a class="nav-link">Opinions</a>
+        <a class="nav-link" (click)="cambiarVista('empleadores')"
+          >Empleadores</a
+        >
       </li>
     </ul>
     <ul class="navbar-nav nav-flex-icons">
@@ -38,7 +36,8 @@
   <div class="container" style="height:1500px;">
     <div class="row pt-5">
       <div class="col text-center">
-        <usuarios></usuarios>
+        <usuarios *ngIf="vista == 'usuarios'"></usuarios>
+        <empleadores *ngIf="vista == 'empleadores'"></empleadores>
       </div>
     </div>
   </div>
