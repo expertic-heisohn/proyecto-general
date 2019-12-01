@@ -1,44 +1,45 @@
 import { Component, OnInit } from "@angular/core";
-import { UsuariosService } from "../../services/usuarios.service";
+import { EmpleadoresService } from "../../services/empleadores.service";
 import { FormControl } from "@angular/forms";
 
 @Component({
-  selector: "usuarios",
-  templateUrl: "./usuarios.component.html"
+  selector: "empleadores",
+  templateUrl: "./empleadores.component.html"
 })
-export class UsuariosComponent implements OnInit {
-  constructor(private usuariosService: UsuariosService) {}
+export class EmpleadoresComponent implements OnInit {
+  constructor(private empleadoresService: EmpleadoresService) {}
 
-  public usuarios = [];
+  public empleadores = [];
   public headElements = ["id", "nombre", "acciones"];
 
   public nombreInput = new FormControl();
+  public idInput = new FormControl();
 
   ngOnInit(): void {
-    this.getUsuarios();
+    this.getEmpleadores();
   }
-  getUsuarios(): void {
-    this.usuariosService.getUsuarios().subscribe(data => {
+  getEmpleadores(): void {
+    this.empleadoresService.getEmpleadores().subscribe(data => {
       console.log({ data });
-      this.usuarios = data;
+      this.empleadores = data;
     });
   }
 
-  deleteUsuario(indice: number): void {
-    this.usuariosService.deleteUsuario(indice).subscribe(data => {
+  deleteEmpleador(indice: number): void {
+    this.empleadoresService.deleteEmpleador(indice).subscribe(data => {
       console.log({ data });
-      this.getUsuarios();
+      this.getEmpleadores();
     });
   }
 
-  createUsuario(): void {
-    const nuevoUsuario: any = {
-      nombre: this.nombreInput.value || ""
+  createEmpleador(): void {
+    const nuevoEmpleador: any = {
+      nombre: this.nombreInput.value || "",
+      id: this.idInput.value || null
     };
-    console.log("click createUsuario === ", { nuevoUsuario });
-    this.usuariosService.createUsuario(nuevoUsuario).subscribe(data => {
+    this.empleadoresService.createEmpleador(nuevoEmpleador).subscribe(data => {
       console.log({ data });
-      this.getUsuarios();
+      this.getEmpleadores();
     });
   }
 }
