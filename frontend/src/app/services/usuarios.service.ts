@@ -31,4 +31,18 @@ export class UsuariosService {
       httpOptions
     );
   }
+
+  editUsuario(indice: number, usuario: IUsuario): Observable<IUsuario> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json"
+      })
+    };
+
+    return this.http.put<IUsuario>(
+      `${this._url}/usuarios/${indice}`,
+      usuario,
+      httpOptions
+    );
+  }
 }
